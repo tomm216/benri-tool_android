@@ -22,4 +22,10 @@
         android:name="tom1tom.softether.benri_tool.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_work"
+        android:name="tom1tom.softether.benri_tool.ui.work.WorkFragment"
+        android:label="@string/menu_work"
+        tools:layout="@layout/fragment_work" />
 </navigation>

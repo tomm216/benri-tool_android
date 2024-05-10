@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.navigation_dashboard) {
                     // 勤怠管理に移動する処理をここに追加
-                    Toast.makeText(MainActivity.this, "勤怠管理画面はこれから実装します", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.nav_work);
                     return true;
                 } else if (itemId == R.id.navigation_notifications) {
                     // 未実装に移動する処理をここに追加
