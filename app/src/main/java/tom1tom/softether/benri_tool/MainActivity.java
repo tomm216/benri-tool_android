@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import tom1tom.softether.benri_tool.databinding.ActivityMainBinding;
+import tom1tom.softether.benri_tool.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,8 +98,22 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     return false;
                 }
+
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // ホームフラグメントが表示されているかどうかを確認し、表示されていない場合はホームに戻ります
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        if (currentFragment instanceof HomeFragment) {
+            super.onBackPressed();
+        } else {
+            // ボトムナビゲーションバーの選択をホームに変更します
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        }
     }
 
 
