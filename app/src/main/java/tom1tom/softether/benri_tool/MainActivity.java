@@ -1,12 +1,17 @@
 package tom1tom.softether.benri_tool;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // BottomNavigationViewのイベント設定
+        setNavViewEvent();
+
         setSupportActionBar(binding.appBarMain.toolbar);
+
+        // FAB (Floating Action Button) の関連部分を削除します
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -56,4 +66,39 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    /**
+     * BottomNavigationViewのイベント設定
+     */
+    private void setNavViewEvent(){
+        BottomNavigationView navView = findViewById(R.id.bottom_navigation); // ボトムナビゲーションビューのIDを修正
+        navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // 各メニューアイテムのIDを取得
+                int itemId = item.getItemId();
+
+                // ナビゲーションアクションを実行する
+                NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+
+                // IDに基づいて処理を実行
+                if (itemId == R.id.navigation_home) {
+                    // ホームに移動する処理をここに追加
+                    navController.navigate(R.id.nav_home);
+                    return true;
+                } else if (itemId == R.id.navigation_dashboard) {
+                    // 勤怠管理に移動する処理をここに追加
+                    Toast.makeText(MainActivity.this, "勤怠管理画面はこれから実装します", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.navigation_notifications) {
+                    // 未実装に移動する処理をここに追加
+                    Toast.makeText(MainActivity.this, "機能はこれから考えます", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+    }
+
+
 }
