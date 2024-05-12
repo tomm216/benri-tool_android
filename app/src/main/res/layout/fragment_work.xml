@@ -1,5 +1,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +17,6 @@
         android:layout_height="wrap_content"
         android:text="12:00"
         android:textSize="24sp"
-        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,10 +28,66 @@
         android:layout_height="wrap_content"
         android:text="2024/05/11"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timeTextView"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"/>
+
+
+    <LinearLayout
+        android:id="@+id/anotherLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border_background"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/dateTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 画面端のスペース -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonAttendance"
+            android:layout_width="20dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="出勤" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" /> <!-- ここでスペースを柔軟に調整 -->
+
+        <Button
+            android:id="@+id/buttonBreak"
+            android:layout_width="20dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="休憩" />
+
+        <!-- 画面端のスペース -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/anotherLinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

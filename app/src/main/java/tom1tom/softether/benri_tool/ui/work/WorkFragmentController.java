@@ -11,7 +11,7 @@ public class WorkFragmentController {
 
     private final Context mContext;
     private final View mRoot;
-    private final TextView mTimeTextView; // 時間のテキストビューを追加
+    private final TextView mTimeTextView;
     private final TextView mDateTextView;
     private final Handler mHandler;
     private final Runnable mUpdateTimeRunnable;
@@ -19,7 +19,7 @@ public class WorkFragmentController {
     public WorkFragmentController(Context context, View root) {
         mContext = context;
         mRoot = root;
-        mTimeTextView = root.findViewById(R.id.timeTextView); // 時間のテキストビューを取得
+        mTimeTextView = root.findViewById(R.id.timeTextView);
         mDateTextView = root.findViewById(R.id.dateTextView);
         mHandler = new Handler(); // Handlerを初期化
         mUpdateTimeRunnable = new Runnable() {
@@ -29,7 +29,7 @@ public class WorkFragmentController {
                 mHandler.postDelayed(this, 1000); // 1秒ごとに更新
             }
         };
-        initialize(); // WorkFragment内からアクセスできるようになりました
+        initialize(); // WorkFragment内からアクセス
     }
 
     protected void initialize() {
