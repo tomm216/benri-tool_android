@@ -57,7 +57,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Entry> {
                 String newDate = selectedYear + "/" + (selectedMonth + 1) + "/" + selectedDayOfMonth;
                 entry.setDate(newDate);
                 notifyDataSetChanged();
-                dbHelper.updateEntryDate(entry.getId(), newDate);
+                dbHelper.updateEntryDate(entry.getHomeId(), newDate);
                 Toast.makeText(mContext, "日付を更新しました", Toast.LENGTH_SHORT).show();
             }, year, month, dayOfMonth);
             datePickerDialog.show();
@@ -76,7 +76,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Entry> {
                 String editedContent = editContentEditText.getText().toString();
                 entry.setContent(editedContent);
                 notifyDataSetChanged();
-                dbHelper.updateEntryContent(entry.getId(), editedContent);
+                dbHelper.updateEntryContent(entry.getHomeId(), editedContent);
                 Toast.makeText(mContext, "内容を更新しました", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             });
@@ -86,7 +86,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Entry> {
             editBuilder.setNeutralButton("削除", (dialog, which) -> {
                 dataList.remove(entry);
                 adapter.notifyDataSetChanged();
-                dbHelper.deleteEntry(entry.getId());
+                dbHelper.deleteEntry(entry.getHomeId());
                 Toast.makeText(mContext, "エントリーを削除しました", Toast.LENGTH_SHORT).show();
             });
 

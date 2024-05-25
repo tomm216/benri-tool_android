@@ -1,0 +1,4 @@
+<resources>
+    <item name="work_id_tag" type="id"/>
+    <item name="break_times_tag" type="id"/>
+</resources>

@@ -9,8 +9,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 import tom1tom.softether.benri_tool.R;
 
-
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -56,8 +54,10 @@ public class EntryListView {
         builder.setPositiveButton("保存", (dialog, which) -> {
             // エントリーをデータベースに追加し、リストにも追加してアダプターを更新
             String content = editText.getText().toString();
-            mDbHelper.insertEntry(new Entry(-1, year + "/" + (month + 1) + "/" + dayOfMonth, content));
-            mDataList.add(new Entry(-1, year + "/" + (month + 1) + "/" + dayOfMonth, content));
+            long workId = 0; // ToDoリストのエントリにはworkIdを0として設定
+            Entry newEntry = new Entry(-1, workId, year + "/" + (month + 1) + "/" + dayOfMonth, content, "", "", "");
+            mDbHelper.insertEntry(newEntry);
+            mDataList.add(newEntry);
             mAdapter.notifyDataSetChanged();
             Toast.makeText(mContext, "保存しました", Toast.LENGTH_SHORT).show();
             dialog.dismiss();

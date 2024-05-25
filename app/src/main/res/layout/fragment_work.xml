@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="30dp"/>
+        app:layout_constraintGuide_begin="30dp" />
 
     <TextView
         android:id="@+id/timeTextView"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"/>
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/dateTextView"
@@ -31,21 +31,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timeTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"/>
-
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/anotherLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/border_background"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/dateTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 画面端のスペース -->
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -53,7 +51,7 @@
 
         <Button
             android:id="@+id/buttonAttendance"
-            android:layout_width="20dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
@@ -62,32 +60,76 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1" /> <!-- ここでスペースを柔軟に調整 -->
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/buttonBreak"
-            android:layout_width="20dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:text="休憩" />
 
-        <!-- 画面端のスペース -->
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myRecyclerView"
-        android:layout_width="0dp"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:stretchColumns="1,2,3,4,5"
         app:layout_constraintTop_toBottomOf="@id/anotherLinearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        android:layout_marginTop="10dp">
 
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出勤日"
+                android:background="#005f73"
+                android:textColor="#ffffff"
+                android:padding="8dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出勤時間"
+                android:background="#005f73"
+                android:textColor="#ffffff"
+                android:padding="8dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="休憩時間"
+                android:background="#005f73"
+                android:textColor="#ffffff"
+                android:padding="8dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退勤時間"
+                android:background="#005f73"
+                android:textColor="#ffffff"
+                android:padding="8dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修正"
+                android:background="#005f73"
+                android:textColor="#ffffff"
+                android:padding="8dp"
+                android:gravity="center"/>
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
